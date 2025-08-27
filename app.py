@@ -25,12 +25,12 @@ st.markdown("""
 
         /* ✅ Alert Box: Success */
         .stAlert-success {
-            background-color: #c8e6c9 !important;
-            color: #1b5e20 !important;
-            font-weight: bold;
+            background-color: #111 !important;
+            color: #fff !important;
+            font-weight: 600;
             font-size: 16px;
-            border-radius: 8px;
-            padding: 0.5em 1em;
+            border-radius: 10px;
+            padding: 14px 16px;
         }
 
         .stAlert-warning { background-color: #fff3cd !important; color: #795548 !important; }
