@@ -133,7 +133,7 @@ if clicked:
 
         results = data[mask]
         if not results.empty:
-            st.success(f"Ditemukan {len(results)} hasil untuk '{q}'")
+            st.markdown(f"<div class='info-banner'>Ditemukan {len(results)} hasil untuk '{q}'</div>", unsafe_allow_html=True)
             st.dataframe(results.style.apply(highlight_expired, axis=1), use_container_width=True)
         else:
             st.markdown(f'<div class="info-banner">Tidak ditemukan hasil untuk "{q}".</div>', unsafe_allow_html=True)
