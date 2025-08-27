@@ -123,13 +123,28 @@ if name_cols: searchable_cols.append(name_cols[0])  # ex: "Nama Lengkap (324)"
 plate_cols = [c for c in data.columns if ("No.Plat" in c) or ("No. Plat" in c) or ("Plat " in c)]
 searchable_cols += plate_cols
 
+# --- tambahkan helper kecil di atas blok input ---
+def _submit_search():
+    st.session_state["do_search"] = True
+
 # ===== 🔍 Input & tombol (tanpa st.form agar tidak ada 'Press Enter...') =====
-query = st.text_input("Masukkan Nama, NIK, atau No.Plat Kendaraan:", placeholder="Contoh: B1234ABC / 3201xxxx / RAKHA")
+query = st.text_input(
+    "Masukkan Nama, NIK, atau No.Plat Kendaraan:",
+    placeholder="Contoh: B1234ABC / 3201xxxx / RAKHA",
+    key="keyword",
+    on_change=_submit_search,   # << tekan Enter akan set flag submit
+)
 clicked = st.button("🔍 Cari Data")
 
+# Enter atau klik sama-sama memicu pencarian
+submit = clicked or st.session_state.get("do_search", False)
+
 # ===== 🔎 Proses Pencarian =====
-if clicked:
-    q = query.strip()
+if submit:
+    # reset flag supaya tidak auto-rerun lagi
+    st.session_state["do_search"] = False
+
+    q = st.session_state.get("keyword", "").strip()
     if q == "":
         st.markdown('<div class="info-banner">Silakan masukkan kata kunci untuk mencari data kendaraan.</div>', unsafe_allow_html=True)
     elif not searchable_cols:
