@@ -62,6 +62,15 @@ st.markdown("""
             background:#111; color:#fff; border-radius:10px;
             padding:14px 16px; font-weight:600; margin: 8px 0 20px 0;
         }
+        .error-banner{
+            background:#dc2626;     
+            color:#fff;
+            border-radius:10px;
+            padding:14px 16px;
+            font-weight:600;
+            margin:8px 0 20px 0;     
+        }   
+        
     </style>
 """, unsafe_allow_html=True)
 
@@ -136,6 +145,6 @@ if clicked:
             st.markdown(f"<div class='info-banner'>Ditemukan {len(results)} hasil untuk '{q}'</div>", unsafe_allow_html=True)
             st.dataframe(results.style.apply(highlight_expired, axis=1), use_container_width=True)
         else:
-            st.markdown(f'<div class="info-banner">Tidak ditemukan hasil untuk "{q}".</div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="error-banner">Tidak ditemukan hasil untuk "{q}".</div>', unsafe_allow_html=True)
 else:
     st.markdown('<div class="info-banner">Silakan masukkan kata kunci untuk mencari data kendaraan.</div>', unsafe_allow_html=True)
