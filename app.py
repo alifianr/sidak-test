@@ -60,7 +60,7 @@ st.markdown("""
         /* Banner info hitam di bawah input */
         .info-banner{
             background:#111; color:#fff; border-radius:10px;
-            padding:14px 16px; font-weight:600; margin-top:8px;
+            padding:14px 16px; font-weight:600; margin: 8px 0 20px 0;
         }
     </style>
 """, unsafe_allow_html=True)
