@@ -2,74 +2,91 @@ import streamlit as st
 import pandas as pd
 import re
 
-# ===== Page setup =====
+# ===== 🔧 Page setup =====
 st.set_page_config(page_title="Pencarian Data Kendaraan", page_icon="🔍", layout="centered")
 
-# ===== CSS (gaya tampilan kedua) =====
+# ===== 💡 CSS Custom untuk Kalbe Style =====
 st.markdown("""
-<style>
-:root{
-  --kalbe-green:#1b5e20; --bg:#e8f5e9; --soft:#f1f8e9; --border:#c8e6c9; --dark:#0f172a;
-}
-.stApp{ background-color:var(--bg); color:var(--kalbe-green); }
+    <style>
+        .stApp { background-color: #e8f5e9; color: #1b5e20; }
 
-h1,h2,h3,h4,h5{ color:var(--kalbe-green); font-weight:800; text-align:center; }
+        label, .stTextInput label, .stTextInput > div > label,
+        .stMarkdown, .stInfo, .stWarning {
+            color: #1b5e20 !important;
+            font-weight: bold;
+        }
 
-.k-card{
-  background:var(--soft); border:1px solid var(--border);
-  border-radius:12px; padding:18px 20px; margin:16px 0;
-  box-shadow:0 4px 12px rgba(0,0,0,.06);
-}
+        .stTextInput > div > div > input {
+            background-color: #ffffff !important;
+            color: #1b5e20 !important;
+            border: 1px solid #81c784;
+            font-weight: bold;
+        }
 
-.k-input input{
-  background:#fff !important; color:#1b5e20 !important; font-weight:600 !important;
-  border:2px solid #2e7d32 !important; border-radius:8px !important;
-  padding:10px 14px !important;
-}
+        /* ✅ Alert Box: Success */
+        .stAlert-success {
+            background-color: #c8e6c9 !important;
+            color: #1b5e20 !important;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 8px;
+            padding: 0.5em 1em;
+        }
 
-div.stButton>button{
-  background:var(--dark) !important; color:#fff !important;
-  border-radius:10px; border:none; padding:.6rem 1.2rem; font-weight:700;
-  box-shadow:0 2px 8px rgba(0,0,0,.15);
-}
+        .stAlert-warning { background-color: #fff3cd !important; color: #795548 !important; }
+        .stAlert-info { background-color: #d0f0fd !important; color: #0277bd !important; }
 
-.info-banner{
-  background:#111; color:#fff; border-radius:10px; padding:14px 16px;
-  font-weight:600; margin-top:8px;
-}
+        h1, h2, h3, h4, h5 {
+            color: #1b5e20; font-weight: 800; text-align: center;
+        }
 
-.stAlert-success{
-  background-color:#c8e6c9 !important; color:#1b5e20 !important;
-  font-weight:700; border-radius:10px;
-}
+        .stDataFrame { background-color: #ffffff; color: #000000; }
 
-.stDataFrame [data-testid="stTable"] thead tr th{
-  background:var(--dark) !important; color:#fff !important; font-weight:800 !important;
-}
-.stDataFrame div[role="columnheader"]{
-  background:var(--dark) !important; color:#fff !important; font-weight:800 !important;
-}
-</style>
+        /* ✅ Tombol submit styling */
+        div.stButton > button,
+        button[aria-label="🔍 Cari Data"] {
+            background-color: #0f172a !important;   /* gelap seperti contoh */
+            color: white !important;
+            border: none; border-radius: 10px;
+            font-weight: 700; padding: 0.6rem 1.2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,.15);
+            transition: 0.3s ease;
+        }
+        div.stButton > button[kind="primary"]:hover,
+        div.stButton > button[aria-label="🔍 Cari Data"]:hover {
+            background-color: #111827 !important; color: white !important;
+        }
+
+        /* Banner info hitam di bawah input */
+        .info-banner{
+            background:#111; color:#fff; border-radius:10px;
+            padding:14px 16px; font-weight:600; margin-top:8px;
+        }
+    </style>
 """, unsafe_allow_html=True)
 
-# ===== Header =====
-st.image("kalbe.png", width=180)  # letak kiri-atas
-st.markdown("<h1>🔍 Pencarian Data Kendaraan</h1>", unsafe_allow_html=True)
-st.markdown("<h4 style='text-align:center;margin-top:-6px;'>PT Kalbe Morinaga Indonesia</h4>", unsafe_allow_html=True)
+# ===== 🖼️ Logo Kalbe =====
+st.image("kalbe.png", width=200)
 
-# ===== Load data (CSV pakai ';') =====
-data = pd.read_csv("data_kendaraan.csv", sep=";", dtype=str, engine="python", on_bad_lines="skip")
+# ===== 🧾 Judul Utama =====
+st.title("🔍 Pencarian Data Kendaraan")
+st.markdown("<h4 style='text-align: center;'>PT Kalbe Morinaga Indonesia</h4>", unsafe_allow_html=True)
+
+# ===== 📦 Load Data (CSV kamu pakai ; dan banyak kolom Unnamed) =====
+data = pd.read_csv('data_kendaraan.csv', sep=';', dtype=str, engine='python', on_bad_lines='skip')
 data.columns = data.columns.str.strip().str.replace(r"\s+", " ", regex=True)
-# buang kolom Unnamed kosong
+# buang kolom Unnamed yang kosong total
 to_drop = [c for c in data.columns if c.startswith("Unnamed:") and data[c].fillna("").eq("").all()]
-data = data.drop(columns=to_drop)
+if to_drop: data = data.drop(columns=to_drop)
+# rapikan isi sel
 data = data.applymap(lambda x: x.strip() if isinstance(x, str) else x)
 
-# ===== Helpers =====
+# ===== 🧠 Helper normalisasi teks (supaya plat dengan spasi/dash tetap cocok) =====
 def norm_text(s: str) -> str:
     if not isinstance(s, str): return ""
     return re.sub(r"[^A-Z0-9]", "", s.upper())
 
+# ===== ✅ Kolom tanggal (struktur baru) =====
 DATE_COLS = [
     "Masa Berlaku SIM Mobil",
     "Masa Berlaku STNK Mobil ke-1",
@@ -80,37 +97,29 @@ DATE_COLS = [
 ]
 date_cols_present = [c for c in DATE_COLS if c in data.columns]
 
+# ===== 🎨 Highlight baris kadaluarsa =====
 def highlight_expired(row):
     now = pd.Timestamp.now().normalize()
     for col in date_cols_present:
-        dt = pd.to_datetime(row.get(col, pd.NaT), errors="coerce", dayfirst=True)
+        dt = pd.to_datetime(row.get(col, pd.NaT), errors='coerce', dayfirst=True)
         if pd.notnull(dt) and dt < now:
-            return ["background-color:#ffcccc; color:red; font-weight:bold"] * len(row)
-    return [""] * len(row)
+            return ['background-color: #ffcccc; color: red; font-weight: bold'] * len(row)
+    return [''] * len(row)
 
-# ===== Kolom yang dicari =====
+# ===== 🔎 Siapkan kolom pencarian: NIK + Nama + semua No.Plat =====
 searchable_cols = []
 if "NIK" in data.columns: searchable_cols.append("NIK")
 name_cols = [c for c in data.columns if re.search(r"\bnama\b", c, flags=re.IGNORECASE)]
-if name_cols: searchable_cols.append(name_cols[0])
+if name_cols: searchable_cols.append(name_cols[0])  # ex: "Nama Lengkap (324)"
 plate_cols = [c for c in data.columns if ("No.Plat" in c) or ("No. Plat" in c) or ("Plat " in c)]
 searchable_cols += plate_cols
 
-# ===== Form Card (tanpa st.form agar tidak ada teks 'Press Enter...') =====
-st.markdown('<div class="k-card">', unsafe_allow_html=True)
-query = st.text_input("Masukkan Nama, NIK, atau No.Plat Kendaraan:", key="q", label_visibility="visible")
-# beri kelas khusus ke input
-st.markdown("""
-<script>
-const boxes=document.querySelectorAll('input[type="text"]');
-boxes.forEach(b=>{ b.parentElement.parentElement.classList.add('k-input'); });
-</script>
-""", unsafe_allow_html=True)
-submit = st.button("🔍 Cari Data")
-st.markdown("</div>", unsafe_allow_html=True)
+# ===== 🔍 Input & tombol (tanpa st.form agar tidak ada 'Press Enter...') =====
+query = st.text_input("Masukkan Nama, NIK, atau No.Plat Kendaraan:", placeholder="Contoh: B1234ABC / 3201xxxx / RAKHA")
+clicked = st.button("🔍 Cari Data")
 
-# ===== Search logic =====
-if submit:
+# ===== 🔎 Proses Pencarian =====
+if clicked:
     q = query.strip()
     if q == "":
         st.markdown('<div class="info-banner">Silakan masukkan kata kunci untuk mencari data kendaraan.</div>', unsafe_allow_html=True)
