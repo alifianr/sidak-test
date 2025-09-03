@@ -232,7 +232,7 @@
 ;RETSU EKA TITIS;K220400071;Production (PRD);;;;11/07/2027;T3951OP;09/06/2028;;;;;;;;;;;;;;;;;;;;;;
 ;RIDWAN;130193026;Production (PRD);;;;31/03/2030;T3413JI;06/09/2026;;;;;;;;;;;;;;;;;;;;;;
 ;RIO ANGGARA;180100015;Production (PRD);;;;08/03/2027;T5497VP;30/05/2026;;;;;;;;;;;;;;;;;;;;;;
-;RIRIS PURWANTO;150791710;Production (PRD);;;;18/01/2029;T2995SX;10/02/2025;;;;;;;;;;;;;;;;;;;;;;
+;RIRIS PURWANTO;150791710;Production (PRD);;;;18/01/2029;T4038LZ;10/02/2026;T5758OM;29/04/2026;;;;;;;;;;;;;;;;;;;;
 ;RISKI ADI PRASETIA;K241100166;Production (PRD);;;;24/07/2029;E6123OM;06/03/2025;;;;;Naik kendaraan umum, numpang, ojek, dll;;;;;;;;;;;;;;;;;
 ;RUDI RAHMAN;121192536;Production (PRD);28/09/2025;T5691EV;03/03/2025;28/08/2025;T5691EV;03/03/2025;;;;;;;;;;;;;;;;;;;;;;
 ;RUDI SETIAWAN;130193027;Production (PRD);18/06/2025;B1325TYH;20/03/2026;03/04/2029;T3070ON;10/05/2026;;;;;;;;;;;;;;;;;;;;;;
@@ -277,11 +277,12 @@
 ;ERIS MOCHAMAD FIRDAUS;130193014;Quality Assurance (QA);;;;;;;;;;;Naik kendaraan umum, numpang, ojek, dll;;;;;;;;;;;;;;;;;
 ;EUIS DIAN ANGGRAENI;180500114;Quality Assurance (QA);08/05/2027;T1066UE;28/01/2025;;;;;;;;;;;;;;;;;;;;;;;;;
 ;FATCHUR RACHMAN;230100009;Quality Assurance (QA);17/06/2025;D1291XHB;10/07/2027;;;;;;;;;;;;;;;;;;;;;;;;;
-;GITA SYEMA DEWI;230100042;Quality Assurance (QA);;;;;;;;;;;Naik kendaraan umum, numpang, ojek, dll;;;;;;;;;;;;;;;;;
-;HENDI ISKANDAR;070600083;Quality Assurance (QA);;;;04/11/2024;Z5438MK;09/11/2024;Z2131KY;15/09/2024;T4424EL;30/12/2024;;;;;;;;;;;;;;;;;;
+;GITA SYEMA DEWI;230100042;Quality Assurance (QA);;;;03/06/2029;F2146AAC;18/10/2025;;;;;;;;;;;;;;;;;;;;;;
+;HENDI ISKANDAR;070600083;Quality Assurance (QA);;;;04/11/2024;Z5438MK;09/11/2024;Z2131KY;15/09/2024;T4424EL;30/12/2024;Naik kendaraan umum, numpang, ojek, dll;;;;;;;;;;;;;;;;;
 ;HERIYANA;130793048;Quality Assurance (QA);;;;18/03/2029;T6130QA;03/04/2029;;;;;Naik kendaraan umum, numpang, ojek, dll;;;;;;;;;;;;;;;;;
 ;IRFAN HIMAWAN;130793050;Quality Assurance (QA);;;;12/08/2027;T4432RK;25/04/2026;T6919NN;19/07/2026;;;;;;;;;;;;;;;;;;;;
 ;JULNEDI;K231100195;Quality Assurance (QA);;;;02/03/2029;B5906KDA;;;;;;;;;;;;;;;;;;;;;;;
+;MARISKA NURJANNAH;K241000158;Quality Assurance (QA);;;;09/11/2029;B5067FRE;16/01/2026;;;;;;;;;;;;;;;;;;;;;;
 ;MUHAMAD MISBAH;200200053;Quality Assurance (QA);;;;30/10/2029;T6340MH;11/09/2026;;;;;;;;;;;;;;;;;;;;;;
 ;MUHAMMAD ALFIN BASYAR;K210700211;Quality Assurance (QA);19/08/2029;G1957EA;15/05/2025;19/09/2029;B4505KSG;05/08/2025;;;;;;;;;;;;;;;;;;;;;;
 ;ONDI NUGROHO;121192534;Quality Assurance (QA);23/09/2025;B2864FMF;17/11/2025;23/09/2025;T4689OA;24/05/2026;;;;;;;;;;;;;;;;;;;;;;
@@ -295,7 +296,7 @@
 ;SARAH AIDA SUHERMAN;K230800138;Quality Assurance (QA);;;;26/11/2024;T6823RF;16/01/2025;;;;;;;;;;;;;;;;;;;;;;
 ;SEPTIAN EKO PRIATNA;100492706;Quality Assurance (QA);;;;;;;;;;;Naik kendaraan umum, numpang, ojek, dll;;;;;;;;;;;;;;;;;
 ;SITI RIZKIANA NURANNISA;100992711;Quality Assurance (QA);;;;24/10/2027;D6304LK;18/11/2028;;;;;;;;;;;;;;;;;;;;;;
-;TIWIK SUYANTI;061100034;Quality Assurance (QA);;;;;;;;;;;Naik kendaraan umum, numpang, ojek, dll;;;;;;;;;;;;;;;;;
+;TIWIK SUYANTI;061100034;Quality Assurance (QA);28/10/2028;T4771WJ;04/10/2025;28/10/2028;T4771WJ;;;;;;Naik kendaraan umum, numpang, ojek, dll;;;;;;;;;;;;;;;;;
 ;ADI SETIAHADI;070100001;Warehouse (WHS);;;;20/04/2029;K3117KB;28/12/2024;AE4193DA;29/12/2024;AE6580OA;23/09/2024;;;;;;;;;;;;;;;;;;
 ;ADIKA TRYPUTRANTO;K200800232;Warehouse (WHS);;;;05/12/2024;T5199CQ;20/04/2025;;;;;;;;;;;;;;;;;;;;;;
 ;ADITYA DAVIT NUGROHO;K230100015;Warehouse (WHS);;;;;;;;;;;Naik kendaraan umum, numpang, ojek, dll;;;;;;;;;;;;;;;;;
@@ -344,7 +345,7 @@
 ;ROBI MUHAMAD RAMDANI;K230600105;Warehouse (WHS);;;;23/02/2026;D2748ABF;08/09/2025;;;;;;;;;;;;;;;;;;;;;;
 ;SUHERI;130193031;Warehouse (WHS);;;;12/11/2027;T6962PC;06/06/2027;;;;;;;;;;;;;;;;;;;;;;
 ;TAUFIK HIDAYAT TU'MARUF;K210600177;Warehouse (WHS);;;;07/08/2028;Z5424DBI;26/09/2028;;;;;;;;;;;;;;;;;;;;;;
-;TIAS OKTAVIAN;K220600119;Warehouse (WHS);07/10/2027;T1298MT;07/10/2027;01/10/2027;T2326SZ;05/08/2026;;;;;;;;;;;;;;;;;;;;;;
+;TIAS OKTAVIAN;K220600119;Warehouse (WHS);07/10/2027;T1298MT;07/10/2027;01/10/2027;T2326SZ;05/08/2026;T5754SP;05/12/2025;;;;;;;;;;;;;;;;;;;;
 ;WARLI;K240300029;Warehouse (WHS);;;;26/09/2025;B3049FXL;02/12/2025;G2558GW;10/07/2025;;;;;;;;;;;;;;;;;;;;
 ;WEMPI NUR HIDAYAT;120692521;Warehouse (WHS);;;;01/02/2029;T3170FN;16/04/2029;T2825PD;16/06/2027;;;;;;;;;;;;;;;;;;;;
 ;WISNU TRI PUSOKO;K240200015;Warehouse (WHS);;;;;;;;;;;Naik kendaraan umum, numpang, ojek, dll;;;;;;;;;;;;;;;;;
